@@ -10,12 +10,11 @@
     "package.json"
   ],
   "bin": {
-    "thel": "./dist/index.js"
+    "thel": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
-    "try": "npm run build && node .",
-    "install": "npm run build && npm i -g ."
+    "try": "npm run build && node ."
   },
   "keywords": [
     "terminal",
@@ -32,11 +31,24 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "@inquirer/select": "^4.0.8",
     "chalk": "^5.4.1",
+    "comatte": "^0.0.1",
     "commander": "^13.1.0",
     "fs-extra": "^11.3.0",
     "pino": "^9.6.0",
     "pino-pretty": "^13.0.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmetcanisik/thel.git"
+  },
+  "type": "commonjs",
+  "types": "./dist/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/ahmetcanisik/thel/issues"
+  },
+  "homepage": "https://github.com/ahmetcanisik/thel#readme"
 }

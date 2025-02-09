@@ -12,7 +12,7 @@ export async function MakeDirs(
   { noWarnings }: MakeDirsOptions = { noWarnings: false }
 ) {
   if (typeof dir_name !== "string") {
-    dir_name = path.join(...dir_name);
+    dir_name = path.resolve(path.join(...dir_name));
   }
 
   try {

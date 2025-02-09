@@ -19,3 +19,7 @@ kullanılan loglama aracı: Pino
 kullanılan test aracı: Jest
 kullanılan tip kontrolü ve derleme aracı: Typescript
 kullanılan programlama dili: Node.js
+
+## yapılacaklar listesi
+
+- tsconfig.json dosyasına: outDir, rootDir sçeenekleri eklenecek.
