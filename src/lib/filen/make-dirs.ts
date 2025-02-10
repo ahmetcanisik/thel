@@ -17,13 +17,10 @@ export async function MakeDirs(
 
   try {
     await fs_mkdirs(dir_name)
-      .then(() =>
-        console.log(noWarnings ? "" : `${dir_name} Successfully created`)
-      )
       .catch((e: any) =>
-        console.error(noWarnings ? "" : "Something went wrong on making dirs!")
+        console.error(`Error: Don't created the ${dir_name} directory!`, e)
       );
   } catch (e: any) {
-    console.error(noWarnings ? "" : "Something went wrong on making dirs!");
+    console.error(`Error: Don't created the ${dir_name} directory!`, e);
   }
 }

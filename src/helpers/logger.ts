@@ -1,7 +1,5 @@
-import pino from "pino";
+import Logil from 'logil';
 
-export const logger = pino({
-  transport: {
-    target: 'pino-pretty'
-  }
-});
+export const logger = new Logil({
+  prefix: "--THEL-->"
+})

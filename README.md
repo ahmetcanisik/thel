@@ -15,11 +15,12 @@ thel cdm create_and_move
 
 ### bu proje hakkında
 
-kullanılan loglama aracı: Pino
+kullanılan loglama aracı: Logil
 kullanılan test aracı: Jest
-kullanılan tip kontrolü ve derleme aracı: Typescript
+kullanılan tip kontrolü ve derleme aracı: Typescript + Swc
 kullanılan programlama dili: Node.js
 
 ## yapılacaklar listesi
 
-- tsconfig.json dosyasına: outDir, rootDir sçeenekleri eklenecek.
+- swc yapılandırması eklenecek ve babel ile minify edilecek build işleminde proje.
+- tests yapılandırması eklenecek jest yardımıyla.

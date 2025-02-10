@@ -1,7 +1,8 @@
+#!/usr/bin/env node
 import {GetPKGInfo} from "./helpers/pkg";
 import {Command} from "commander";
 import {logger} from "./helpers/logger";
-import {CreateNewProject, CreateNewProjectOptions} from "./actions/create-new-project";
+import {CreateNewProject} from "./actions/create-new-project";
 
 async function main() {
     const {name, description, version} = await GetPKGInfo();
@@ -20,9 +21,13 @@ async function main() {
         .description("Create Blank TypeScript Project!")
         .argument("[projectName]", "Name of the project to Directory.")
         .option("-y, --yes", "Accept default options")
+        .option("-l, --lang <string>", "Select project programing language.")
         .action(
             async (directoryName, options) => {
-                if (!directoryName) { logger.error("Please specify a directory name");return; }
+                if (!directoryName) {
+                    logger.error("Please specify a directory name");
+                    return;
+                }
                 await CreateNewProject(directoryName, {
                     acceptDefault: options.yes || false,
                 })
