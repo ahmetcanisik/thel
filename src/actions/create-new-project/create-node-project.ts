@@ -1,4 +1,4 @@
-import {MakeDirs, WriteFile} from "../../lib/filen";
+import {MakeDirs, WriteFile} from "filen";
 import {logger} from "../../helpers/logger";
 
 export async function CreateNodeProject(

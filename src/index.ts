@@ -18,10 +18,10 @@ async function main() {
 
     thel
         .command("new")
-        .description("Create Blank TypeScript Project!")
+        .description("Create Blank Nodejs or Python Project!")
         .argument("[projectName]", "Name of the project to Directory.")
         .option("-y, --yes", "Accept default options")
-        .option("-l, --lang <string>", "Select project programing language.")
+        .option("-l, --lang [node | python]", "Select project programing language.")
         .action(
             async (directoryName, options) => {
                 if (!directoryName) {
@@ -30,6 +30,7 @@ async function main() {
                 }
                 await CreateNewProject(directoryName, {
                     acceptDefault: options.yes || false,
+                    language: options.lang && !options.yes ? options.lang : 'node',
                 })
             }
         );

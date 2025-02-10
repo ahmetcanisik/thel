@@ -2,14 +2,16 @@
 
 Yazılımcılar! bu araç sizler için, terminal üzerinde kullanacağınız thel'in özellikleri aşağıdaki gibidir;
 
-
+Create project tree, generate default tree = node
 ```shell
 thel new myprojectname
 ```
 
+Create the python project tree.
 ```shell
-thel cdm create_and_move
+thel new myprojectname --lang python
 ```
+
 - new: yeni boş bir typescript projesi oluşturur. (benzeri: cargo new proje_adi)
 - cdm: create directory and move in.
 

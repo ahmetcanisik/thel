@@ -1,6 +1,6 @@
 {
   "name": "thel",
-  "version": "0.2.1",
+  "version": "0.2.5",
   "description": "The Terminal Helper!",
   "main": "./dist/index.js",
   "files": [
@@ -13,6 +13,7 @@
     "thel": "./dist/index.js"
   },
   "scripts": {
+    "prepare": "npm run build",
     "build": "tsc",
     "try": "npm run build && node ."
   },
@@ -25,15 +26,12 @@
   "author": "ahmetcanisik <imcanisik@gmail.com> (https://ahmetcanisik.com)",
   "license": "MIT",
   "devDependencies": {
-    "@types/figlet": "^1.7.0",
-    "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.13.1",
     "typescript": "^5.7.3"
   },
   "dependencies": {
-    "comatte": "^0.0.1",
     "commander": "^13.1.0",
-    "fs-extra": "^11.3.0",
+    "filen": "^0.1.0",
     "logil": "^0.1.0"
   },
   "repository": {
