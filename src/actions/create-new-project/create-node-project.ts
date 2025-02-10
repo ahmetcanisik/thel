@@ -303,7 +303,7 @@ THE SOFTWARE.`)
             }
         );
 
-    // create create-dir-movein.ts file in src directory.
+    // add index.ts to project/src directory.
     await WriteFile([project_name, "src", "index.ts"], 'console.log("Hello, World!")')
         .catch((e: any) => {
                 anyError = true;
