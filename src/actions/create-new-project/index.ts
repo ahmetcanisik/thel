@@ -14,7 +14,7 @@ export async function CreateNewProject(
         await CreateNodeProject(project_name);
         return;
     } else {
-        if (language && language === 'python') {
+        if (language && ["python", "py"].includes(language)) {
             await CreatePythonProject(project_name);
         } else {
             await CreateNodeProject(project_name);
