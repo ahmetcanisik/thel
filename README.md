@@ -17,10 +17,10 @@ thel new myprojectname --lang python
 
 ### About this project
 
-logger library is Logil
-test library is Jest
-Type Checker and Compiler Library is TypeScript and SWC
-The Programing Language Node.js will be used in this project
+- logger library is Logil
+- test library is Jest
+- Type Checker and Compiler Library is TypeScript and SWC
+- The Programing Language Node.js will be used in this project
 
 ### TODOS
 
