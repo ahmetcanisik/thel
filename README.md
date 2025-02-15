@@ -1,28 +1,28 @@
 # Thel: The Terminal Helper!
 
-Yazılımcılar! bu araç sizler için, terminal üzerinde kullanacağınız thel'in özellikleri aşağıdaki gibidir;
+This tool for the Develpers!
+The Thel features used on terminal are below.
 
-Create project tree, generate default tree = node
+**Create project tree with `new` argument.**
+
+Default tree is Node.js
 ```shell
 thel new myprojectname
 ```
 
-Create the python project tree.
+Create a Python blank.
 ```shell
 thel new myprojectname --lang python
 ```
 
-- new: yeni boş bir typescript projesi oluşturur. (benzeri: cargo new proje_adi)
-- cdm: create directory and move in.
+### About this project
 
-### bu proje hakkında
+logger library is Logil
+test library is Jest
+Type Checker and Compiler Library is TypeScript and SWC
+The Programing Language Node.js will be used in this project
 
-kullanılan loglama aracı: Logil
-kullanılan test aracı: Jest
-kullanılan tip kontrolü ve derleme aracı: Typescript + Swc
-kullanılan programlama dili: Node.js
+### TODOS
 
-## yapılacaklar listesi
-
-- swc yapılandırması eklenecek ve babel ile minify edilecek build işleminde proje.
-- tests yapılandırması eklenecek jest yardımıyla.
+- [ ] Add swc + babel on this project
+- [ ] Use tests with jest.

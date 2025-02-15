@@ -17,20 +17,6 @@ export async function CreatePythonProject(
             }
         );
 
-    // add package.json to project with npm init
-    // await RunStep(`npm init -y --prefix ${project_name}`, "add package.json to project with npm init");
-
-    // add project dependencies to package.json
-    // await RunStep(`npm i @types/node typescript --save-dev --prefix ${project_name}`, "install project dependencies");
-    /*let projectDeps = await ReadFile([project_name, "package.json"], { parseToJson: true });
-    projectDeps = {
-        ...projectDeps,
-        "devDependencies": {
-            "typescript": "latest",
-            "@types/node": "latest"
-        }
-    };*/
-
     // add pyproject.toml to project
     await WriteFile([project_name, "pyproject.toml"], `[project]
 name = "${project_name}"
@@ -62,16 +48,6 @@ build-backend = "setuptools.build_meta"`, {noWarnings: true})
                 )
             }
         );
-
-    // npx tsc --init
-    // read tsconfig.json file
-    // push in;
-    // rootDir: "./src"
-    // outDir: "./dist"
-
-    // add tsconfig.json to project with tsc --init
-    // await RunStep(`cd ${project_name} && npx -y tsc --init`, "add tsconfig.json to project with tsc --init");
-
 
     // add .gitignore file to project
     await WriteFile([project_name, ".gitignore"], `# Byte-compiled / optimized / DLL files
