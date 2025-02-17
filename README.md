@@ -26,4 +26,5 @@ thel new myprojectname --lang python
 
 - [ ] Add swc + babel on this project
 - [ ] Use tests with jest.
+- [ ] add => --template choice. default cli. --template nextjs etc.
 - [ ] add => (thel new .) or (thel new . --lang py) 
