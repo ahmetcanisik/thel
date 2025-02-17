@@ -26,3 +26,4 @@ thel new myprojectname --lang python
 
 - [ ] Add swc + babel on this project
 - [ ] Use tests with jest.
+- [ ] add => (thel new .) or (thel new . --lang py) 
