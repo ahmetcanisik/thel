@@ -1,6 +1,6 @@
 {
   "name": "thel",
-  "version": "0.3.0",
+  "version": "0.2.7",
   "description": "The Terminal Helper!",
   "main": "./dist/index.js",
   "files": [

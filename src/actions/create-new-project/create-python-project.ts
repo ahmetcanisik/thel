@@ -6,17 +6,6 @@ export async function CreatePythonProject(
 ) {
     let anyError = false;
 
-    // create project directory.
-    await MakeDirs(project_name, {noWarnings: true})
-        .catch((e: any) => {
-                anyError = true;
-                logger.error(
-                    `Error: create ${project_name} directory.`,
-                    e
-                )
-            }
-        );
-
     // add pyproject.toml to project
     await WriteFile([project_name, "pyproject.toml"], `[project]
 name = "${project_name}"
