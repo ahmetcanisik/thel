@@ -12,7 +12,7 @@ thel new myprojectname
 
 Create a Python blank.
 ```shell
-thel new myprojectname --lang python
+thel new myprojectname.py
 ```
 
 ### About this project
@@ -28,3 +28,7 @@ thel new myprojectname --lang python
 - [ ] Use tests with jest.
 - [ ] add => --template choice. default cli. --template nextjs etc.
 - [ ] add => (thel new .) or (thel new . --lang py) 
+
+
+- delete --lang option for the new parameter
+- and catch project name .js or .py

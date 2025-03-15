@@ -13,6 +13,7 @@ export async function CreateNewProject(
     {acceptDefault, language}: CreateNewProjectOptions = {acceptDefault: false, language: 'node'}
 ) {
     let anyError = false;
+
     // create project directory.
     await MakeDirs([project_name], {noWarnings: true})
         .catch((e: any) => {
@@ -29,7 +30,7 @@ export async function CreateNewProject(
             await CreateNodeProject(project_name);
             return;
         } else {
-            if (language && ["python", "py"].includes(language)) {
+            if (language && language === "python") {
                 await CreatePythonProject(project_name);
             } else {
                 await CreateNodeProject(project_name);
