@@ -1,50 +1,33 @@
 {
   "name": "thel",
-  "version": "0.3.0",
-  "description": "The Terminal Helper!",
+  "version": "0.4.0",
+  "description": "",
   "main": "./dist/index.js",
+  "scripts": {
+    "build": "tsc && npx zx scripts/prepare.mjs",
+    "try": "npm run build && node ."
+  },
   "files": [
     "dist",
     "LICENSE",
     "README.md",
     "package.json"
   ],
-  "bin": {
-    "thel": "./dist/index.js"
-  },
-  "scripts": {
-    "prepare": "npm run build",
-    "build": "tsc",
-    "try": "npm run build && node .",
-    "test": "jest"
-  },
-  "keywords": [
-    "terminal",
-    "helper",
-    "util",
-    "cli"
-  ],
-  "author": "ahmetcanisik <imcanisik@gmail.com> (https://ahmetcanisik.com)",
   "license": "MIT",
+  "author": "",
+  "keywords": [
+    ""
+  ],
   "devDependencies": {
-    "@types/node": "^22.13.1",
-    "jest": "^29.7.0",
-    "typescript": "^5.7.3",
-    "zx": "^8.3.2"
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.14.0",
+    "typescript": "^5.8.2",
+    "zx": "^8.5.0"
   },
   "dependencies": {
     "commander": "^13.1.0",
     "filen": "^0.1.0",
+    "fs-extra": "^11.3.0",
     "logil": "^0.1.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ahmetcanisik/thel.git"
-  },
-  "type": "commonjs",
-  "types": "./dist/index.d.ts",
-  "bugs": {
-    "url": "https://github.com/ahmetcanisik/thel/issues"
-  },
-  "homepage": "https://github.com/ahmetcanisik/thel#readme"
+  }
 }

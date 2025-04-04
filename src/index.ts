@@ -2,7 +2,7 @@
 import { GetPKGInfo } from "./helpers/pkg";
 import { Command } from "commander";
 import { logger } from "./helpers/logger";
-import { CreateNewProject } from "./actions/create-new-project";
+import { CreateNewProject } from "./actions/create-new-project.ts";
 
 async function main() {
   const { name, description, version } = await GetPKGInfo();
@@ -32,8 +32,6 @@ async function main() {
       
       if (splittedProjectName) {
         switch (splittedProjectName[splittedProjectName.length - 1]) {
-          case "js":
-            break;
           case "py":
             projectType = "python";
             break;

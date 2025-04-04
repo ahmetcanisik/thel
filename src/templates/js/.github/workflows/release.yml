@@ -1,0 +1,100 @@
+name: Release a new version
+
+on:
+  workflow_run:
+    workflows: ["Unit test"]
+    types:
+      - completed
+    branches:
+      - main
+
+jobs:
+  check_version:
+    runs-on: ubuntu-latest
+    outputs:
+      should_release: ${{ steps.check.outputs.should_release }}
+      version: ${{ steps.current_version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get current version
+        id: current_version
+        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Get latest release version
+        id: latest_version
+        run: |
+          LATEST_VERSION=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.tag_name // "v0.0.0"')
+          echo "version=${LATEST_VERSION#v}" >> $GITHUB_OUTPUT
+
+      - name: Check if version changed
+        id: check
+        run: |
+          CURRENT_VERSION="${{ steps.current_version.outputs.version }}"
+          LATEST_VERSION="${{ steps.latest_version.outputs.version }}"
+          if [ "$CURRENT_VERSION" != "$LATEST_VERSION" ]; then
+            echo "should_release=true" >> $GITHUB_OUTPUT
+            echo "Current version ($CURRENT_VERSION) is different from latest release ($LATEST_VERSION)"
+          else
+            echo "should_release=false" >> $GITHUB_OUTPUT
+            echo "Current version ($CURRENT_VERSION) matches latest release ($LATEST_VERSION)"
+          fi
+
+  new_release:
+    needs: [check_version]
+    if: needs.check_version.outputs.should_release == 'true' && ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: |
+          npm i -g pnpm
+          pnpm i
+
+      - name: Build
+        run: pnpm build
+        continue-on-error: false
+
+      - name: Create Git Tag
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git tag -a "v${{ needs.check_version.outputs.version }}" -m "Release v${{ needs.check_version.outputs.version }}"
+          git push origin "v${{ needs.check_version.outputs.version }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ needs.check_version.outputs.version }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: false
+
+      - name: Setup NPM
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
+          cat .npmrc
+
+      - name: Publish to NPM
+        run: |
+          npm whoami
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        continue-on-error: false
