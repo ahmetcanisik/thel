@@ -2,7 +2,7 @@
 import { GetPKGInfo } from "./helpers/pkg";
 import { Command } from "commander";
 import { logger } from "./helpers/logger";
-import { CreateNewProject } from "./actions/create-new-project.ts";
+import { CreateNewProject } from "./actions/create-new-project";
 
 async function main() {
   const { name, description, version } = await GetPKGInfo();
