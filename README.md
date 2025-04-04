@@ -1,3 +1,3 @@
-# project
+# Thel
 
-crated with <https://npmjs.com/package/thel>
+The Terminal Helper!

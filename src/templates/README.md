@@ -1,3 +1,3 @@
 # project
 
-crated with <https://npmjs.com/package/thel>
+powered by [thel](https://npmjs.com/package/thel)
